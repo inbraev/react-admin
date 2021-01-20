@@ -37,13 +37,13 @@ function Icons() {
             cy="6.5"
             r="5.75"
             stroke="#C5C7CD"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
           <path
             d="M11 11L15 15"
             stroke="#C5C7CD"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           />
         </svg>
       </SearchIcon>
@@ -75,7 +75,7 @@ function Icons() {
               r="3.75"
               fill="#3751FF"
               stroke="#F7F8FC"
-              stroke-width="1.5"
+              strokeWidth="1.5"
             />
           </svg>
         </Bell>

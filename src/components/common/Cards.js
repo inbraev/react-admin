@@ -1,19 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-const data = [
-  { title: "Unresolved", info: 60 },
-  { title: "Overdue", info: 16 },
-  { title: "Open", info: 43 },
-  { title: "On hold", info: 64 },
-];
 
- 
-export const CardsStatistics = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 5.8rem;
-`;
 export const CardInfo = styled.h4`
   font-weight: 700;
   text-align: center;
@@ -55,14 +41,3 @@ export const CardTitle = styled(CardInfo)`
     color: #3751ff;
   }
 `;
-
-function Cards({ title, info }) {
-  return (
-    <CardItem>
-      <CardTitle>{title}</CardTitle>
-      <CardInfo>{info}</CardInfo>
-    </CardItem>
-  );
-}
-
-export default Cards;

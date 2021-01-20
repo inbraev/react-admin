@@ -32,8 +32,7 @@ import styled from "styled-components";
 // import Icons from "./components/common/Icons";
 // import Avatar from "./components/common/Avatar";
 import Header from "./components/common/Header";
-import Card from "./components/common/Cards";
-import { CardsStatistics } from "./components/common/Cards";
+import CardsStatistics from "./components/CardStatistics/CardStatistics";
 import img from "./images/avatar.png";
 import { createGlobalStyle } from "styled-components";
 import Trends from "./components/Trends/Trends";
@@ -91,6 +90,7 @@ html{
 // `;
 const Wrapper = styled.div`
   margin: 30px 23px;
+  max-width: 1440px;
 `;
 // const Input = styled.input`
 //   border-radius: 50%;
@@ -99,19 +99,26 @@ const Wrapper = styled.div`
 //     background: green;
 //   }
 // `;
-
+const data = [
+  { title: "Unresolved", info: 60 },
+  { title: "Overdue", info: 16 },
+  { title: "Open", info: 43 },
+  { title: "On hold", info: 64 },
+];
+const trendData = [
+  { title: "Resolved", info: 449 },
+  { title: "Received", info: 426 },
+  { title: "Average first response time", info: "33m" },
+  { title: "Average response time", info: "3h 8m" },
+  { title: "Resolution within SLA", info: "94%" },
+];
 const App = () => (
   <div>
     <GlobalStyle />
     <Wrapper>
-      <Header title="Overview" src={img}></Header>
-      <CardsStatistics>
-        <Card title="Unresolved" info="60"></Card>
-        <Card title="Opened" info="60"></Card>
-        <Card title="On hold" info="60"></Card>
-        <Card title="Overdue" info="60"></Card>
-      </CardsStatistics>
-      <Trends></Trends>
+      <Header title="Overview" src={img} />
+      <CardsStatistics data={data} />
+      <Trends trendData={trendData} />
     </Wrapper>
   </div>
 );

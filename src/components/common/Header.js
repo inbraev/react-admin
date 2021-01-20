@@ -15,7 +15,6 @@ const HeaderTitle = styled.h2`
 `;
 
 function Header({ title, src }) {
-  console.log(src);
   return (
     <HeaderRow>
       <HeaderTitle>{title}</HeaderTitle>

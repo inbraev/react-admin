@@ -11,22 +11,21 @@ export const Status = styled.div`
   line-height: 14px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  ${({ color }) => {
-    switch (color) {
-      case "yellow":
-        return "background:#FEC400";
-      case "green":
-        return "background:#29CC97";
-      case "red":
-        return "background:#F12B2C";
-      default:
-        return `background:#F0F1F7;
-        color:#9FA2B4`;
+  ${({ status }) => {
+    if (["urgent", "low"].includes(status)) {
+      return "background:#FEC400";
+    } else if (["normal", "new"].includes(status)) {
+      return "background:#29CC97";
+    } else if (status === "high") {
+      return "background:#F12B2C";
+    } else {
+      return `background:#F0F1F7;
+              color:#9FA2B4`;
     }
-  }};
+  }}
 `;
 
-const TaskStatus = ({ color, text }) => {
-  return <Status color={color}>{text}</Status>;
+const TaskStatus = ({ status }) => {
+  return <Status status={status}>{status}</Status>;
 };
 export default TaskStatus;

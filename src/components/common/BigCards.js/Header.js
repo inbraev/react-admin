@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LeftText, RightText, JustifyDiv } from "./Ticket";
+import { LeftText, RightText, JustifyDiv } from "./Items";
 const HeaderJustifyDiv = styled(JustifyDiv)`
   padding: 0;
   border: none;
@@ -25,15 +25,15 @@ const P = styled.p`
 const Span = styled.span`
   color: #9fa2b4;
 `;
-function Header() {
+function Header({ leftText, rightText, greyText, text }) {
   return (
     <>
       <HeaderJustifyDiv>
-        <HeaderLeftText>Unresolved tickets</HeaderLeftText>
-        <HeaderRightText as="button">View details</HeaderRightText>
+        <HeaderLeftText>{leftText}</HeaderLeftText>
+        <HeaderRightText as="button">{rightText}</HeaderRightText>
       </HeaderJustifyDiv>
       <P>
-        <Span>Group:</Span> Support
+        <Span>{greyText}</Span> {text}
       </P>
     </>
   );

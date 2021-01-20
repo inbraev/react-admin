@@ -6,7 +6,7 @@ const Status = styled(TaskStatus)`
   border-radius: 100px;
 `;
 
-const PriorityStatus = ({ color, text }) => {
-  return <Status color={color}>{text}</Status>;
+const PriorityStatus = ({ text }) => {
+  return <Status status={text}>{text}</Status>;
 };
 export default PriorityStatus;

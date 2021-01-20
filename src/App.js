@@ -37,6 +37,8 @@ import img from "./images/avatar.png";
 import { createGlobalStyle } from "styled-components";
 import Trends from "./components/Trends/Trends";
 import UnresolvedTickets from "./components/UnresolvedTickets/UnresolvedTickets";
+import Tasks from "./components/Tasks/Tasks";
+import TicketsAndTasks from "./components/TicketsAndTasks/TicketsAndTasks";
 const GlobalStyle = createGlobalStyle`
 * {
   padding: 0;
@@ -119,6 +121,11 @@ const ticketsData = [
   { status: "Awaiting Developer Fix", number: 914 },
   { status: "Pending", number: 281 },
 ];
+const tasksData = [
+  { status: "urgent", text: "Finish ticket update" },
+  { status: "new", text: "Create new ticket example" },
+  { status: "default", text: "Update ticket report" },
+];
 const App = () => (
   <div>
     <GlobalStyle />
@@ -126,7 +133,9 @@ const App = () => (
       <Header title="Overview" src={img} />
       <CardsStatistics data={data} />
       <Trends trendData={trendData} />
-      <UnresolvedTickets data={ticketsData} />
+      <TicketsAndTasks tasksData={tasksData} ticketsData={ticketsData} />
+      {/* <UnresolvedTickets data={ticketsData} />
+      <Tasks data={tasksData} /> */}
     </Wrapper>
   </div>
 );

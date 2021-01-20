@@ -25,7 +25,7 @@ export const CardItem = styled.article`
     color: #3751ff;
     cursor: pointer;
     border: 1px solid #3751ff;
-    transform: scale(1.1);
+    transform: scale(1.02);
   }
 `;
 export const CardTitle = styled(CardInfo)`

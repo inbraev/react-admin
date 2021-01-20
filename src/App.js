@@ -36,6 +36,7 @@ import CardsStatistics from "./components/CardStatistics/CardStatistics";
 import img from "./images/avatar.png";
 import { createGlobalStyle } from "styled-components";
 import Trends from "./components/Trends/Trends";
+import UnresolvedTickets from "./components/UnresolvedTickets/UnresolvedTickets";
 const GlobalStyle = createGlobalStyle`
 * {
   padding: 0;
@@ -112,6 +113,12 @@ const trendData = [
   { title: "Average response time", info: "3h 8m" },
   { title: "Resolution within SLA", info: "94%" },
 ];
+const ticketsData = [
+  { status: "Waiting on Feature Request", number: 4238 },
+  { status: "Awaiting Customer Response", number: 1005 },
+  { status: "Awaiting Developer Fix", number: 914 },
+  { status: "Pending", number: 281 },
+];
 const App = () => (
   <div>
     <GlobalStyle />
@@ -119,6 +126,7 @@ const App = () => (
       <Header title="Overview" src={img} />
       <CardsStatistics data={data} />
       <Trends trendData={trendData} />
+      <UnresolvedTickets data={ticketsData} />
     </Wrapper>
   </div>
 );

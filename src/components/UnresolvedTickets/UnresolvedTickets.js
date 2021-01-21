@@ -11,6 +11,7 @@ function UnresolvedTickets({ data }) {
         greyText="Group:"
         text="Support"
       />
+
       {data.map((ticket, index) => {
         return (
           <Ticket key={index} status={ticket.status} number={ticket.number} />

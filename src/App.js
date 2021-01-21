@@ -36,9 +36,9 @@ import CardsStatistics from "./components/CardStatistics/CardStatistics";
 import img from "./images/avatar.png";
 import { createGlobalStyle } from "styled-components";
 import Trends from "./components/Trends/Trends";
-import UnresolvedTickets from "./components/UnresolvedTickets/UnresolvedTickets";
-import Tasks from "./components/Tasks/Tasks";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TicketsAndTasks from "./components/TicketsAndTasks/TicketsAndTasks";
+import Navbar from "./components/Navbar/Navbar";
 const GlobalStyle = createGlobalStyle`
 * {
   padding: 0;
@@ -95,6 +95,9 @@ const Wrapper = styled.div`
   margin: 30px 23px;
   max-width: 1440px;
 `;
+const Flex = styled.div`
+  display: flex;
+`;
 // const Input = styled.input`
 //   border-radius: 50%;
 //   display: block;
@@ -129,14 +132,44 @@ const tasksData = [
 const App = () => (
   <div>
     <GlobalStyle />
+    <Router>
+      <Switch>
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <>
+          
+              <Flex>
+                <Navbar />
+                <Wrapper>
+                  <Header title="Overview" src={img} />
+                  <CardsStatistics data={data} />
+                  <Trends trendData={trendData} />
+                  <TicketsAndTasks
+                    tasksData={tasksData}
+                    ticketsData={ticketsData}
+                  />
+                </Wrapper>
+              </Flex>
+            </>
+          )}
+        />
+        <Route
+          path="/tickets"
+          render={() => <Trends trendData={trendData} />}
+        />
+      </Switch>
+    </Router>
+  </div>
+);
+export default App;
+
+/*  
+ 
     <Wrapper>
       <Header title="Overview" src={img} />
       <CardsStatistics data={data} />
       <Trends trendData={trendData} />
       <TicketsAndTasks tasksData={tasksData} ticketsData={ticketsData} />
-      {/* <UnresolvedTickets data={ticketsData} />
-      <Tasks data={tasksData} /> */}
-    </Wrapper>
-  </div>
-);
-export default App;
+ */

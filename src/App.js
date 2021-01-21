@@ -27,14 +27,14 @@
 //     </div>
 //   );
 // }}
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import React, { Component } from "react";
 // import Profile from "./components/common/Profile";
 // import Icons from "./components/common/Icons";
 // import Avatar from "./components/common/Avatar";
 import Header from "./components/common/Header";
 import CardsStatistics from "./components/CardStatistics/CardStatistics";
 import img from "./images/avatar.png";
-import { createGlobalStyle } from "styled-components";
 import Trends from "./components/Trends/Trends";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TicketsAndTasks from "./components/TicketsAndTasks/TicketsAndTasks";
@@ -124,45 +124,65 @@ const ticketsData = [
   { status: "Awaiting Developer Fix", number: 914 },
   { status: "Pending", number: 281 },
 ];
-const tasksData = [
-  { status: "urgent", text: "Finish ticket update" },
-  { status: "new", text: "Create new ticket example" },
-  { status: "default", text: "Update ticket report" },
-];
-const App = () => (
-  <div>
-    <GlobalStyle />
-    <Router>
-      <Switch>
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <>
-          
-              <Flex>
-                <Navbar />
-                <Wrapper>
-                  <Header title="Overview" src={img} />
-                  <CardsStatistics data={data} />
-                  <Trends trendData={trendData} />
-                  <TicketsAndTasks
-                    tasksData={tasksData}
-                    ticketsData={ticketsData}
-                  />
-                </Wrapper>
-              </Flex>
-            </>
-          )}
-        />
-        <Route
-          path="/tickets"
-          render={() => <Trends trendData={trendData} />}
-        />
-      </Switch>
-    </Router>
-  </div>
-);
+
+export class App extends Component {
+  state = {
+    tasksData: [
+      { status: "urgent", text: "Finish ticket update" },
+      { status: "new", text: "Create new ticket example" },
+      { status: "default", text: "Update ticket report" },
+    ],
+  };
+  addTask = (task) => {
+    const newTask = {
+      status: "new",
+      text: task,
+    };
+    this.setState(({ tasksData }) => {
+      const newArr = [newTask, ...tasksData];
+      return {
+        tasksData: newArr,
+      };
+    });
+  };
+  render() {
+    return (
+      <div>
+        <GlobalStyle />
+        <Router>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <>
+                  <Flex>
+                    <Navbar />
+                    <Wrapper>
+                      <Header title="Overview" src={img} />
+                      <CardsStatistics data={data} />
+                      <Trends trendData={trendData} />
+                      <TicketsAndTasks
+                        tasksData={this.state.tasksData}
+                        ticketsData={ticketsData}
+                        addTask={this.addTask}
+                      />
+                    </Wrapper>
+                  </Flex>
+                </>
+              )}
+            />
+            <Route
+              path="/tickets"
+              render={() => <Trends trendData={trendData} />}
+            />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
+}
+
 export default App;
 
 /*  

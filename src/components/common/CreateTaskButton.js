@@ -11,7 +11,7 @@ const CreateButton = styled.button`
 `;
 // add animation on click to do
 function CreateTaskButton() {
-  return <CreateButton onClick={() => console.log("a")} />;
+  return <CreateButton />;
 }
 
 export default CreateTaskButton;

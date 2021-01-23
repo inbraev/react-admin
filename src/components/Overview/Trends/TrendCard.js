@@ -1,5 +1,5 @@
 import React from "react";
-import { CardTitle, CardInfo, CardItem } from "../common/Cards";
+import { CardTitle, CardInfo, CardItem } from "../../common/Cards";
 import styled from "styled-components";
 const TrendCardTitle = styled(CardTitle)`
   font-size: 1.6rem;

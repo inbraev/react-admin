@@ -8,6 +8,9 @@ const CreateButton = styled.button`
   ::before {
     content: url(${Icon});
   }
+  :hover {
+    cursor: pointer;
+  }
 `;
 // add animation on click to do
 function CreateTaskButton() {

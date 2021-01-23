@@ -1,5 +1,9 @@
 import React from "react";
-import { JustifyDiv, LeftText, RightText } from "../common/BigCards.js/Items";
+import {
+  JustifyDiv,
+  LeftText,
+  RightText,
+} from "../../common/BigCards.js/Items";
 function Ticket({ status, number }) {
   return (
     <JustifyDiv>

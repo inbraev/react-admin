@@ -13,7 +13,11 @@ const HeaderLeftText = styled(LeftText)`
 `;
 const HeaderRightText = styled(RightText)`
   color: #3751ff;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const P = styled.p`
   font-size: 1.2rem;
@@ -30,10 +34,10 @@ function Header({ leftText, rightText, greyText, text }) {
     <>
       <HeaderJustifyDiv>
         <HeaderLeftText>{leftText}</HeaderLeftText>
-        <HeaderRightText as="button">{rightText}</HeaderRightText>
+        <HeaderRightText as="a">{rightText}</HeaderRightText>
       </HeaderJustifyDiv>
       <P>
-        <Span>{greyText}</Span> {text}
+        <Span>{greyText}</Span>&nbsp;{text}
       </P>
     </>
   );

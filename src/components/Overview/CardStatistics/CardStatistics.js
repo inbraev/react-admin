@@ -6,7 +6,6 @@ export const CardsStatisticsRow = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 5.8rem;
 `;
 function CardStatistics(props) {
   const { data } = props;

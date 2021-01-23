@@ -8,55 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TicketsAndTasks from "./components/Overview/TicketsAndTasks/TicketsAndTasks";
 import Navbar from "./components/common/Navbar/Navbar";
 import Table from "./components/Tickets/Table/Table";
-
-const GlobalStyle = createGlobalStyle`
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-
-:focus,
-:active {
-  outline: none;
-}
-a:focus,
-a:active {
-  outline: none;
-}
-
-
-nav,
-footer,
-header,
-aside {
-  display: block;
-}
-html{
-  font-size:62.5%;
-}
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing:border-box;
-    background: #F7F8FC;
-    
-     
-    font-family: 'Mulish', Sans-Serif;
-    color: #252733;
-  }
-`;
-
+const GlobalStyle = createGlobalStyle`* {padding: 0;margin: 0;border: 0;}*,*:before,*:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}:focus,:active {outline: none;}a:focus,a:active {outline: none;}nav,footer,header,aside {display: block;}html{font-size:62.5%;}body {margin: 0;padding: 0;box-sizing:border-box;background: #F7F8FC;font-family: 'Mulish', Sans-Serif;color: #252733;}`;
 const Wrapper = styled.div`
   margin: 30px 23px;
   max-width: 1440px;
@@ -64,7 +16,6 @@ const Wrapper = styled.div`
 const Flex = styled.div`
   display: flex;
 `;
-
 const data = [
   { title: "Unresolved", info: 60 },
   { title: "Overdue", info: 16 },
@@ -84,7 +35,6 @@ const ticketsData = [
   { status: "Awaiting Developer Fix", number: 914 },
   { status: "Pending", number: 281 },
 ];
-
 export class App extends Component {
   state = {
     tasksData: [
@@ -166,53 +116,45 @@ export class App extends Component {
     ],
   };
   addTask = (task) => {
-    const newTask = {
-      status: "new",
-      text: task,
-    };
+    const newTask = { status: "new", text: task };
     this.setState(({ tasksData }) => {
       const newArr = [newTask, ...tasksData];
-      return {
-        tasksData: newArr,
-      };
+      return { tasksData: newArr };
     });
   };
   render() {
     return (
       <Wrapper>
         <GlobalStyle />
-
         <Router>
           <Switch>
             <Route
               path="/"
-              exact
-              render={() => (
-                <Flex>
-                  <Navbar />
-                  <Wrapper>
-                    <Header title="Overview" src={img} />
-                    <CardsStatistics data={data} />
-                    <Trends trendData={trendData} />
-                    <TicketsAndTasks
-                      tasksData={this.state.tasksData}
-                      ticketsData={ticketsData}
-                      addTask={this.addTask}
-                    />
-                  </Wrapper>
-                </Flex>
+              exactrender={() => (
+                <>
+                  <Flex>
+                    <Navbar />
+                    <Wrapper>
+                      <Header title="Overview" src={img} />
+                      <CardsStatistics data={data} />
+                      <Trends trendData={trendData} />
+                      <TicketsAndTasks
+                        tasksData={this.state.tasksData}
+                        ticketsData={ticketsData}
+                        addTask={this.addTask}
+                      />
+                    </Wrapper>
+                  </Flex>
+                </>
               )}
             />
             <Route
               path="/tickets"
               render={() => (
-                <Flex>
-                  <Navbar />
-                  <Wrapper>
-                    <Header title="Tickets" src={img} />
-                    <Table tickets={this.state.tickets} />
-                  </Wrapper>
-                </Flex>
+                <>
+                  <Header title="Tickets" src={img} />
+                  <Table tickets={this.state.tickets} />
+                </>
               )}
             />
           </Switch>
@@ -221,14 +163,8 @@ export class App extends Component {
     );
   }
 }
+export default App; /*<Wrapper><Header title="Overview" src={img} /><CardsStatistics data={data} /><Trends trendData={trendData} />
 
-export default App;
 
-/*  
- 
-    <Wrapper>
-      <Header title="Overview" src={img} />
-      <CardsStatistics data={data} />
-      <Trends trendData={trendData} />
-      <TicketsAndTasks tasksData={tasksData} ticketsData={ticketsData} />
- */
+
+<TicketsAndTasks tasksData={tasksData} ticketsData={ticketsData} />*/

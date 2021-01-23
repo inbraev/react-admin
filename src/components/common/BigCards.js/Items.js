@@ -25,5 +25,5 @@ export const Wrapper = styled.article`
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  flex-basis: 58rem;
+  flex-basis: 52rem;
 `;

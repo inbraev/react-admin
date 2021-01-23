@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../common/BigCards.js/Header";
+import Header from "../../common/BigCards.js/Header";
 import Ticket from "./Ticket";
-import { Wrapper } from "../common/BigCards.js/Items";
+import { Wrapper } from "../../common/BigCards.js/Items";
 function UnresolvedTickets({ data }) {
   return (
     <Wrapper>

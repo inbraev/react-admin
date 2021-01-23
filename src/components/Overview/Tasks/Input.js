@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { JustifyDiv, LeftText, RightText } from "../common/BigCards.js/Items";
-import CreateTaskButton from "../common/CreateTaskButton";
-import { Divider } from "../Navbar/SidebarData";
+import {
+  JustifyDiv,
+  LeftText,
+  RightText,
+} from "../../common/BigCards.js/Items";
+import CreateTaskButton from "../../common/CreateTaskButton";
+import { Divider } from "../../common/Navbar/SidebarData";
 const Input = styled.input`
   font-size: 14px;
   padding: 10px;
@@ -25,6 +29,10 @@ export class CreateTask extends Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
+    if (!this.state.inputField) {
+      alert("Поле не может быть пустым!");
+      return;
+    }
     this.props.addTask(this.state.inputField);
     this.setState({
       inputField: "",

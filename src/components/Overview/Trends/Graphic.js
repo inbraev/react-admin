@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../../images/graphic.png";
+import Image from "../../../images/graphic.png";
 
 function Graphic() {
   return (

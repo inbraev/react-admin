@@ -1,5 +1,5 @@
 import React from "react";
-import { CardInfo, CardTitle, CardItem } from "../common/Cards";
+import { CardInfo, CardTitle, CardItem } from "../../common/Cards";
 
 function Card({ title, info }) {
   return (

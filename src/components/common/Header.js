@@ -5,6 +5,7 @@ import Profile from "./Profile";
 const HeaderRow = styled.header`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 5.8rem;
 `;
 const HeaderTitle = styled.h2`
   flex: 1 1 3.5rem;

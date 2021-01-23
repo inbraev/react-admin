@@ -5,10 +5,12 @@ const Figure = styled.figure`
   height: 43px;
   position: relative;
   margin: 0 10px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const Img = styled.img`
   position: absolute;
-
   top: 0;
   left: 0;
   border-radius: 50%;

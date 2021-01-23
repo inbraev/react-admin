@@ -8,15 +8,21 @@ export const Notification = styled.div`
   position: relative;
   width: fit-content;
   padding: 0 14px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export const Bell = styled.div`
   position: absolute;
-  top: -7px;
+  top: -3px;
   right: -3px;
   padding: 0 14px;
 `;
 export const SearchIcon = styled.div`
   padding: 0 14px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const Divider = styled.div`
   padding: 0 14px;

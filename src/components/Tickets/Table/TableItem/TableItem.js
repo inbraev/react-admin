@@ -23,8 +23,9 @@ const BlurP = styled.p`
   font-weight: 400;
 `;
 const Td = styled.td`
+  padding: 23px 0;
   :first-child {
-    width: 90px;
+    width: 70px;
   }
   :last-child {
     text-align: center;
@@ -33,8 +34,12 @@ const Td = styled.td`
     cursor: pointer;
   }
 `;
-const Tr = styled.tr`
-  padding: 20px 0;
+
+export const Div = styled.div`
+  border-bottom: 1px solid #dfe0eb;
+  width: 100%;
+  position: absolute;
+  right: 0;
 `;
 function TableItem({
   color,
@@ -47,29 +52,34 @@ function TableItem({
   status,
 }) {
   return (
-    <Tr>
-      <Td>
-        <Photo color={color} />
-      </Td>
-      <Td>
-        <P>{text}</P>
-        <BlurP> {blurText}</BlurP>
-      </Td>
-      <Td>
-        <P>{name}</P>
-        <BlurP> {blurName}</BlurP>
-      </Td>
-      <Td>
-        <P>{date}</P>
-        <BlurP> {blurDate}</BlurP>
-      </Td>
-      <Td>
-        <PriorityStatus text={status} />
-      </Td>
-      <Td>
-        <MoreVertical />
-      </Td>
-    </Tr>
+    <>
+      <tr>
+        <Td>
+          <Photo color={color} />
+        </Td>
+        <Td>
+          <P>{text}</P>
+          <BlurP> {blurText}</BlurP>
+        </Td>
+        <Td>
+          <P>{name}</P>
+          <BlurP> {blurName}</BlurP>
+        </Td>
+        <Td>
+          <P>{date}</P>
+          <BlurP> {blurDate}</BlurP>
+        </Td>
+        <Td>
+          <PriorityStatus text={status} />
+        </Td>
+        <Td>
+          <MoreVertical />
+        </Td>
+      </tr>
+      <tr>
+        <Div></Div>
+      </tr>
+    </>
   );
 }
 

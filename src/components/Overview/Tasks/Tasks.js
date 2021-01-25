@@ -10,15 +10,7 @@ function Tasks({ data, addTask, onToggleDone }) {
       <Header leftText="Tasks" rightText="View all" greyText="Today" />
       <CreateTask addTask={addTask} />
       {data.map((task, index) => {
-        return (
-          <Task
-            key={index}
-            status={task.status}
-            text={task.text}
-            done={task.done}
-            onToggleDone={onToggleDone}
-          />
-        );
+        return <Task key={index} task={task} onToggleDone={onToggleDone} />;
       })}
     </Wrapper>
   );

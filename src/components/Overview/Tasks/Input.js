@@ -7,9 +7,10 @@ import {
 } from "../../common/BigCards.js/Items";
 import CreateTaskButton from "../../common/CreateTaskButton";
 import { Divider } from "../../common/Navbar/SidebarData";
+import { Div } from "../../Tickets/Table/TableItem/TableItem";
 const Input = styled.input`
   font-size: 14px;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: #f7f8fc;
   width: 100%;
   box-shadow: none;
@@ -52,11 +53,11 @@ export class CreateTask extends Component {
               required
             />
           </LeftText>
+
           <RightText>
             <CreateTaskButton type="submit" />
           </RightText>
         </JustifyDiv>
-        <Divider />
       </form>
     );
   }

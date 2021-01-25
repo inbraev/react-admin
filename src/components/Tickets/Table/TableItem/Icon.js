@@ -2,7 +2,7 @@ import React from "react";
 
 function Icon() {
   return (
-    <button>
+    <div>
       <svg
         width="24"
         height="24"
@@ -15,7 +15,7 @@ function Icon() {
           fill="#C5C7CD"
         />
       </svg>
-    </button>
+    </div>
   );
 }
 

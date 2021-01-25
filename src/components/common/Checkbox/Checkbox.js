@@ -1,21 +1,19 @@
 import React from "react";
 import "./Checkbox.css";
-function Checkbox({ id, done, onToggleDone }) {
-  const on = (id) => {
-    console.log(id);
-    // onToggleDone(id);
+function Checkbox(props) {
+  const onToggleDone = () => {
+    props.onToggleDone(props.id);
   };
   return (
     <div className="container">
       <div className="round">
-        {/* add onChange handler */}
         <input
           type="checkbox"
-          id={id}
-          checked={done ? "checked" : ""}
-          onChange={on}
+          id={props.id}
+          checked={props.done ? "checked" : ""}
+          onChange={onToggleDone}
         />
-        <label htmlFor={id}></label>
+        <label htmlFor={props.id}></label>
       </div>
     </div>
   );

@@ -2,17 +2,18 @@ import React from "react";
 import TableHeader from "./TableHeader";
 import styled from "styled-components";
 import TableItem from "./TableItem/TableItem";
-
+import { Div } from "./TableItem/TableItem";
 const Wrapper = styled.main`
   border: 1px solid #dfe0eb;
   padding: 32px 32px 24px 32px;
   border-radius: 8px;
   width: 900px;
+  position: relative;
 `;
 
 const TicketTable = styled.table`
   width: 100%;
-  position: relative;
+
   margin-top: 40px;
 `;
 const Th = styled.th`
@@ -22,12 +23,7 @@ const Th = styled.th`
   line-height: 17px;
   letter-spacing: 0.2;
   color: #9fa2b4;
-`;
-
-const Div = styled.div`
-  border-bottom: 1px solid #dfe0eb;
-  width: 100%;
-  position: absolute;
+  padding-bottom: 15px;
 `;
 
 function Table({ tickets, sortTickets, setFilterTerm }) {
@@ -45,7 +41,7 @@ function Table({ tickets, sortTickets, setFilterTerm }) {
             <Th>&nbsp;</Th>
           </tr>
         </thead>
-
+        <Div />
         <tbody>
           {tickets.map((ticket, index) => {
             return <TableItem key={index} {...ticket} />;

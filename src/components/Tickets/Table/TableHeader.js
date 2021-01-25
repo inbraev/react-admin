@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import TicketButton from "./TicketButton";
-import Sort from "../../../icons/Tickets/sort.svg";
+import FilterButton from "./FilterButton";
 import Filter from "../../../icons/Tickets/filter.svg";
-
+import Select from "./Select";
 const Flex = styled.header`
   display: flex;
 `;
@@ -16,12 +15,16 @@ const Header = styled.h2`
   letter-spacing: 0.4;
   color: #252733;
 `;
-function TableHeader() {
+function TableHeader({ sortTickets, setFilterTerm }) {
   return (
     <Flex>
       <Header>All tickets</Header>
-      <TicketButton text="Sort" icon={Sort}></TicketButton>
-      <TicketButton text="Filter" icon={Filter}></TicketButton>
+      <Select sortTickets={sortTickets}></Select>
+      <FilterButton
+        text="Filter"
+        icon={Filter}
+        setFilterTerm={setFilterTerm}
+      ></FilterButton>
     </Flex>
   );
 }

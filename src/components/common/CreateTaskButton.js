@@ -4,7 +4,7 @@ import Icon from "../../icons/createTask.svg";
 const CreateButton = styled.button`
   background-color: #f7f8fc;
   padding: 8px;
-  width: 100%;
+  margin-left: 1px;
   ::before {
     content: url(${Icon});
   }

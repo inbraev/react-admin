@@ -11,10 +11,13 @@ const Input = styled.input`
   font-size: 14px;
   padding: 10px;
   background-color: #f7f8fc;
-
   width: 100%;
+  box-shadow: none;
   ::placeholder {
     color: #c5c7cd;
+  }
+  :focus {
+    border-bottom: 1px solid #3751ff;
   }
 `;
 
@@ -22,6 +25,7 @@ export class CreateTask extends Component {
   state = {
     inputField: "",
   };
+
   onInputChange = (e) => {
     this.setState({
       inputField: e.target.value,
@@ -29,10 +33,6 @@ export class CreateTask extends Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.inputField) {
-      alert("Поле не может быть пустым!");
-      return;
-    }
     this.props.addTask(this.state.inputField);
     this.setState({
       inputField: "",
@@ -49,6 +49,7 @@ export class CreateTask extends Component {
               value={this.state.inputField}
               placeholder="Create new task"
               onChange={this.onInputChange}
+              required
             />
           </LeftText>
           <RightText>

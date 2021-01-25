@@ -88,10 +88,11 @@ const ticketsData = [
 export class App extends Component {
   state = {
     tasksData: [
-      { status: "urgent", text: "Finish ticket update" },
-      { status: "new", text: "Create new ticket example" },
-      { status: "default", text: "Update ticket report" },
+      { id: 1, status: "urgent", text: "Finish ticket update", done: true },
+      { id: 2, status: "new", text: "Create new ticket example", done: false },
+      { id: 3, status: "default", text: "Update ticket report", done: false },
     ],
+    maxId: 4,
     tickets: [
       {
         status: "high",
@@ -105,83 +106,135 @@ export class App extends Component {
       },
       {
         status: "high",
-        text: "Contact Email not linked",
+        text: "Adding Images to Feature Posts",
         blurText: "Updated 1 day ago",
         color: "",
-        name: "Tom Cruise",
+        name: "Matt Damon",
         blurName: "on 24.05.2019",
         date: "May 26,2019",
-        blurDate: "6:30 PM",
+        blurDate: "7:30 PM",
       },
       {
         status: "normal",
-        text: "Contact Email not linked",
+        text: "When will be I charged this month?",
         blurText: "Updated 1 day ago",
         color: "cyan",
-        name: "Tom Cruise",
+        name: "Robert Downey",
         blurName: "on 24.05.2019",
         date: "May 26,2019",
-        blurDate: "6:30 PM",
+        blurDate: "6:35 PM",
       },
       {
         status: "low",
-        text: "Contact Email not linked",
+        text: "Payment not going through",
         blurText: "Updated 1 day ago",
         color: "green",
-        name: "Tom Cruise",
+        name: "Christian Bale",
         blurName: "on 24.05.2019",
-        date: "May 26,2019",
+        date: "May 25,2019",
         blurDate: "6:30 PM",
       },
       {
         status: "high",
-        text: "Contact Email not linked",
+        text: "Unable to add replies",
         blurText: "Updated 1 day ago",
         color: "pink",
-        name: "Tom Cruise",
+        name: "Henry Cavil",
         blurName: "on 24.05.2019",
         date: "May 26,2019",
-        blurDate: "6:30 PM",
+        blurDate: "6:50 PM",
       },
       {
         status: "low",
-        text: "Contact Email not linked",
-        blurText: "Updated 1 day ago",
+        text: "Downtime since last week",
+        blurText: "Updated 2 days ago",
         color: "blue",
-        name: "Tom Cruise",
-        blurName: "on 24.05.2019",
-        date: "May 26,2019",
-        blurDate: "6:30 PM",
+        name: "Chris Evans",
+        blurName: "on 23.05.2019",
+        date: "May 25,2019",
+        blurDate: "11:30 PM",
       },
       {
         status: "normal",
-        text: "Contact Email not linked",
-        blurText: "Updated 1 day ago",
+        text: "How do I change my password?",
+        blurText: "Updated 6 days ago",
         color: "yellow",
-        name: "Tom Cruise",
+        name: "Steve Rogers",
         blurName: "on 24.05.2019",
-        date: "May 26,2019",
-        blurDate: "6:30 PM",
+        date: "May 24,2019",
+        blurDate: "8:30 PM",
       },
     ],
+    filterTerm: "",
+  };
+  sortTickets = (property, ascending) => {
+    const newArray = [...this.state.tickets];
+    const types = {
+      status: "Priority",
+      date: "Date",
+      text: "Details",
+      name: "Name",
+    };
+    const sortProperty = Object.keys(types).find(
+      (key) => types[key] === property
+    );
+    ascending
+      ? newArray.sort((a, b) => a[sortProperty] > b[sortProperty])
+      : newArray.sort((a, b) => a[sortProperty] < b[sortProperty]);
+
+    this.setState(({ tickets }) => {
+      return {
+        tickets: newArray,
+      };
+    });
+  };
+  setFilterTerm = (filterTerm) => {
+    this.setState({ filterTerm });
+  };
+  filterTickets = (data, substr) => {
+    if (!substr.trim()) {
+      return data;
+    }
+    return data.filter((elem) =>
+      elem.text.toLowerCase().includes(substr.toLowerCase())
+    );
+  };
+  onToggleDone = (id) => {
+    this.setState(({ tasksData }) => {
+      const index = tasksData.findIndex((elem) => elem.id === id);
+      const oldItem = tasksData[index];
+      const newItem = { ...oldItem, done: !oldItem.done };
+      const newArray = [
+        ...tasksData.slice(0, index),
+        newItem,
+        ...tasksData.slice(index + 1),
+      ];
+      return {
+        tasksData: newArray,
+      };
+    });
   };
   addTask = (task) => {
     const newTask = {
       status: "new",
       text: task,
+      done: false,
+      id: this.state.maxId,
     };
-    this.setState(({ tasksData }) => {
+    this.setState(({ tasksData, maxId }) => {
       const newArr = [newTask, ...tasksData];
       return {
         tasksData: newArr,
+        maxId: maxId + 1,
       };
     });
   };
   render() {
+    const { tickets, filterTerm, tasksData } = this.state;
+    const visibleTickets = this.filterTickets(tickets, filterTerm);
     return (
       <Wrapper>
         <GlobalStyle />
-
         <Router>
           <Switch>
             <Route
@@ -195,9 +248,10 @@ export class App extends Component {
                     <CardsStatistics data={data} />
                     <Trends trendData={trendData} />
                     <TicketsAndTasks
-                      tasksData={this.state.tasksData}
+                      tasksData={tasksData}
                       ticketsData={ticketsData}
                       addTask={this.addTask}
+                      onToggleDone={this.onToggleDone}
                     />
                   </Wrapper>
                 </Flex>
@@ -210,7 +264,11 @@ export class App extends Component {
                   <Navbar />
                   <Wrapper>
                     <Header title="Tickets" src={img} />
-                    <Table tickets={this.state.tickets} />
+                    <Table
+                      tickets={visibleTickets}
+                      sortTickets={this.sortTickets}
+                      setFilterTerm={this.setFilterTerm}
+                    />
                   </Wrapper>
                 </Flex>
               )}
@@ -223,12 +281,3 @@ export class App extends Component {
 }
 
 export default App;
-
-/*  
- 
-    <Wrapper>
-      <Header title="Overview" src={img} />
-      <CardsStatistics data={data} />
-      <Trends trendData={trendData} />
-      <TicketsAndTasks tasksData={tasksData} ticketsData={ticketsData} />
- */

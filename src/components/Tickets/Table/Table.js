@@ -14,7 +14,6 @@ const TicketTable = styled.table`
   width: 100%;
   position: relative;
   margin-top: 40px;
-  /* margin-bottom: 400px; */
 `;
 const Th = styled.th`
   text-align: left;
@@ -31,10 +30,10 @@ const Div = styled.div`
   position: absolute;
 `;
 
-function Table({ tickets }) {
+function Table({ tickets, sortTickets, setFilterTerm }) {
   return (
     <Wrapper>
-      <TableHeader />
+      <TableHeader sortTickets={sortTickets} setFilterTerm={setFilterTerm} />
       <TicketTable>
         <thead>
           <tr>

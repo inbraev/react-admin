@@ -8,13 +8,14 @@ const TicketTaskSection = styled.section`
   justify-content: space-between;
   align-items: flex-start;
 `;
-function TicketsAndTasks({ tasksData, addTask, ticketsData }) {
+function TicketsAndTasks({ tasksData, addTask, ticketsData ,onToggleDone}) {
   return (
     <TicketTaskSection>
       <UnresolvedTickets data={ticketsData} style={{ flexBasis: "70rem" }} />
       <Tasks
         data={tasksData}
         addTask={addTask}
+        onToggleDone={onToggleDone}
         style={{ flexBasis: "70rem" }}
       />
     </TicketTaskSection>

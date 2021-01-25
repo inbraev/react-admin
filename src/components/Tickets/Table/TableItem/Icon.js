@@ -2,11 +2,7 @@ import React from "react";
 
 function Icon() {
   return (
-    <button
-      onClick={() => {
-        console.log("asd");
-      }}
-    >
+    <button>
       <svg
         width="24"
         height="24"

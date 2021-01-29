@@ -13,6 +13,7 @@
 /src/images
 /src/icons
 .eslingcache
+.eslintcache
 # misc
 .DS_Store
 .env.local

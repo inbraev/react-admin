@@ -9,6 +9,9 @@ const Span = styled.span`
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 2rem;
+  @media (max-width: 425px) {
+    display: none;
+  }
 `;
 
 function Profile({ username, src }) {

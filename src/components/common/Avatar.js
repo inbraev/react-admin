@@ -21,7 +21,10 @@ const Img = styled.img`
 function Avatar({ src }) {
   return (
     <Figure>
-      <Img src={src} alt="Current user photo" />
+      <Img src={src} alt="Current user photo" role="presentation" />
+      <figcaption style={{ visibility: "hidden" }}>
+        User Profile photo
+      </figcaption>
     </Figure>
   );
 }

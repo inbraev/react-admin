@@ -7,17 +7,16 @@ const TicketTaskSection = styled.section`
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: flex-start;
+  @media (max-width: 905px) {
+    align-items: center;
+    justify-content: center;
+  }
 `;
-function TicketsAndTasks({ tasksData, addTask, ticketsData ,onToggleDone}) {
+function TicketsAndTasks({ tasksData, addTask, ticketsData, onToggleDone }) {
   return (
     <TicketTaskSection>
-      <UnresolvedTickets data={ticketsData} style={{ flexBasis: "70rem" }} />
-      <Tasks
-        data={tasksData}
-        addTask={addTask}
-        onToggleDone={onToggleDone}
-        style={{ flexBasis: "70rem" }}
-      />
+      <UnresolvedTickets data={ticketsData} />
+      <Tasks data={tasksData} addTask={addTask} onToggleDone={onToggleDone} />
     </TicketTaskSection>
   );
 }

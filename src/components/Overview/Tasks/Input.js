@@ -6,11 +6,9 @@ import {
   RightText,
 } from "../../common/BigCards.js/Items";
 import CreateTaskButton from "../../common/CreateTaskButton";
-import { Divider } from "../../common/Navbar/SidebarData";
-import { Div } from "../../Tickets/Table/TableItem/TableItem";
 const Input = styled.input`
   font-size: 14px;
-  /* padding: 10px; */
+  padding: 10px;
   background-color: #f7f8fc;
   width: 100%;
   box-shadow: none;
@@ -42,11 +40,16 @@ export class CreateTask extends Component {
   render() {
     return (
       <form action="" onSubmit={this.onSubmit}>
-        <JustifyDiv style={{ padding: "0" }}>
+        <JustifyDiv style={{ padding: 0 }}>
           <LeftText style={{ flexGrow: 1 }}>
+            <label htmlFor="newTask" style={{ display: "none" }}>
+              create new task
+            </label>
             <Input
+              id="newTask"
               type="text"
-              maxLength="50"
+              maxLength="30"
+              size="30"
               value={this.state.inputField}
               placeholder="Create new task"
               onChange={this.onInputChange}
@@ -55,7 +58,11 @@ export class CreateTask extends Component {
           </LeftText>
 
           <RightText>
-            <CreateTaskButton type="submit" />
+            <CreateTaskButton
+              type="submit"
+              tabIndex="0"
+              disable={this.state.inputField ? 0 : 1}
+            />
           </RightText>
         </JustifyDiv>
       </form>

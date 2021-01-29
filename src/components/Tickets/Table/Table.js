@@ -3,17 +3,19 @@ import TableHeader from "./TableHeader";
 import styled from "styled-components";
 import TableItem from "./TableItem/TableItem";
 import { Div } from "./TableItem/TableItem";
+import TableFooter from "./TableFooter";
 const Wrapper = styled.main`
   border: 1px solid #dfe0eb;
   padding: 32px 32px 24px 32px;
   border-radius: 8px;
   width: 900px;
   position: relative;
+  background: #fff;
 `;
 
 const TicketTable = styled.table`
   width: 100%;
-
+  border-collapse: collapse;
   margin-top: 40px;
 `;
 const Th = styled.th`
@@ -25,21 +27,25 @@ const Th = styled.th`
   color: #9fa2b4;
   padding-bottom: 15px;
 `;
-
+export const Tr = styled.tr`
+  :hover {
+    background: #f7f8ff;
+  }
+`;
 function Table({ tickets, sortTickets, setFilterTerm }) {
   return (
     <Wrapper>
       <TableHeader sortTickets={sortTickets} setFilterTerm={setFilterTerm} />
       <TicketTable>
         <thead>
-          <tr>
+          <Tr>
             <Th>Ticket details</Th>
             <Th>&nbsp;</Th>
             <Th>Customer name</Th>
             <Th>Date</Th>
             <Th>Priority</Th>
             <Th>&nbsp;</Th>
-          </tr>
+          </Tr>
         </thead>
         <Div />
         <tbody>
@@ -48,6 +54,7 @@ function Table({ tickets, sortTickets, setFilterTerm }) {
           })}
         </tbody>
       </TicketTable>
+      <TableFooter />
     </Wrapper>
   );
 }

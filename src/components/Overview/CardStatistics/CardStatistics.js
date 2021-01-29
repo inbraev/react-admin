@@ -4,8 +4,13 @@ import Card from "./Card";
 
 export const CardsStatisticsRow = styled.section`
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 738px) {
+    flex-wrap: wrap;
+  }
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 function CardStatistics(props) {
   const { data } = props;

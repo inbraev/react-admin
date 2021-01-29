@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PriorityStatus from "../../../common/PriorityStatus";
 import MoreVertical from "./Icon";
+import { Tr } from "../Table";
 const P = styled.p`
   font-size: 14px;
   line-height: 20px;
@@ -53,7 +54,7 @@ function TableItem({
 }) {
   return (
     <>
-      <tr>
+      <Tr>
         <Td>
           <Photo color={color} />
         </Td>
@@ -75,10 +76,10 @@ function TableItem({
         <Td>
           <MoreVertical />
         </Td>
-      </tr>
-      <tr>
+      </Tr>
+      <Tr>
         <Div></Div>
-      </tr>
+      </Tr>
     </>
   );
 }

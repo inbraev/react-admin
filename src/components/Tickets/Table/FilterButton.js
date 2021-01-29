@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import FilterInput from "./FilterInput";
 const Button = styled.button`
-  background-color: #f7f8fc;
+  background-color: #fff;
   padding: 3px;
   width: 68px;
   color: #4b506d;

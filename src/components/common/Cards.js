@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CardInfo = styled.h4`
   font-weight: 700;
   text-align: center;
-  width: 19.4rem;
   line-height: 5rem;
   font-size: 4rem;
   margin: 0 3.2rem;
@@ -13,12 +12,8 @@ export const CardInfo = styled.h4`
 export const CardItem = styled.article`
   border: 1px solid #dfe0eb;
   align-items: center;
-  flex: 0 1 19.4rem;
-  justify-content: center;
+  flex: 0 1 20rem;
   border-radius: 8px;
-  /* margin-top: 5.8rem; 
-  добавить данное свойтство в media to do
-  */
   background: #ffffff;
   transition: all 0.5s;
   &:hover {
@@ -29,7 +24,7 @@ export const CardItem = styled.article`
   }
 `;
 export const CardTitle = styled(CardInfo)`
-  color: #9fa2b4;
+  color: #9fa2b4; // не подходит по контрасту
   letter-spacing: 0.4px;
   text-transform: capitalize;
   margin-bottom: 1.2rem;

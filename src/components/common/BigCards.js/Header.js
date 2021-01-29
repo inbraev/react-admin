@@ -10,6 +10,9 @@ const HeaderLeftText = styled(LeftText)`
   font-size: 1.9rem;
   line-height: 2.3rem;
   letter-spacing: 0.4px;
+  @media (max-width: 457px) {
+    font-size: 1.7rem;
+  }
 `;
 const HeaderRightText = styled(RightText)`
   color: #3751ff;
@@ -17,6 +20,9 @@ const HeaderRightText = styled(RightText)`
   font-weight: bold;
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: 457px) {
+    font-size: 1.3rem;
   }
 `;
 const P = styled.p`
@@ -34,7 +40,9 @@ function Header({ leftText, rightText, greyText, text }) {
     <>
       <HeaderJustifyDiv>
         <HeaderLeftText>{leftText}</HeaderLeftText>
-        <HeaderRightText as="a">{rightText}</HeaderRightText>
+        <HeaderRightText as="a" role="presentation">
+          {rightText}
+        </HeaderRightText>
       </HeaderJustifyDiv>
       <P>
         <Span>{greyText}</Span>&nbsp;{text}

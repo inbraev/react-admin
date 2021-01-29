@@ -1,25 +1,18 @@
-.navbar {
-    background-color: #F7F8FC;
-    height: 80px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
 .menu-bars {
-    width: 255px;
-    margin-left: 2rem;
+    margin: 0 auto;
     font-size: 2rem;
     background: none;
-
-
 }
 
 .burger {
     position: fixed;
-    top: 25px;
+    top: 52px;
     left: 25px;
+    z-index: 25;
+}
 
+.navbar:focus {
+    border: 1px solid blue;
 }
 
 .menu-bars:first-child {
@@ -55,6 +48,7 @@
     padding: 8px 0px 8px 16px;
     list-style: none;
     height: 60px;
+
 }
 
 .nav-logo {
@@ -64,6 +58,10 @@
     padding: 8px 8px 0px 8px;
     list-style: none;
     height: 60px;
+}
+
+.nav-logo:focus {
+    border: 1px solid green;
 }
 
 .nav-logo a {
@@ -77,25 +75,39 @@
 
 .nav-text a {
     text-decoration: none;
-    color: #f5f5f5;
+    color: #A4A6B3;
     font-size: 16px;
     width: 95%;
     height: 100%;
     display: flex;
     align-items: center;
     padding: 0 16px;
+    position: relative;
 }
 
 .nav-text a:hover {
     background-color: #3F4049;
-
+    color: #DDE2FF;
 }
 
-/* .nav-text:first-child {
+.selected>span {
+    color: #DDE2FF;
+}
+
+.selected>div svg path {
+    fill: white;
+}
+
+.nav-text>a.selected {
+    background-color: #3F4049;
+}
+
+.nav-text a.selected::before {
+    content: url('../../../icons/Sidebar/selected.svg');
     position: absolute;
-    left: 500px;
     top: 0;
-} */
+    left: 0;
+}
 
 .nav-menu-items {
     width: 100%;
@@ -117,4 +129,26 @@ span {
 .icon {
     width: 45px;
     height: 45px;
+}
+
+@media screen and (max-width:404px) {
+    .icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .burger {
+        top: 25px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .burger {
+        top: 58px;
+    }
 }

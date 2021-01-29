@@ -8,15 +8,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TicketsAndTasks from "./components/Overview/TicketsAndTasks/TicketsAndTasks";
 import Navbar from "./components/common/Navbar/Navbar";
 import Table from "./components/Tickets/Table/Table";
-
 const GlobalStyle = createGlobalStyle`
 * {
   padding: 0;
   margin: 0;
   border: 0;
 }
-
-
 *,
 *:before,
 *:after {
@@ -24,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 
 :focus,
 :active {
@@ -34,8 +30,6 @@ a:focus,
 a:active {
   outline: none;
 }
-
-
 nav,
 footer,
 header,
@@ -46,27 +40,23 @@ html{
   font-size:62.5%;
 }
   body {
-    margin: 0;
-    padding: 0;
     box-sizing:border-box;
     background: #F7F8FC;
-    
-     
     font-family: 'Mulish', Sans-Serif;
     color: #252733;
   }
+`;
+const FlexContainer = styled.div`
+  display: flex;
 `;
 
 const Wrapper = styled.div`
   margin: 30px 23px;
   max-width: 1440px;
 `;
-const Flex = styled.div`
-  display: flex;
-`;
 
 const data = [
-  { title: "Unresolved", info: 60 },
+  { title: "Unresoled", info: 60 },
   { title: "Overdue", info: 16 },
   { title: "Open", info: 43 },
   { title: "On hold", info: 64 },
@@ -88,9 +78,9 @@ const ticketsData = [
 export class App extends Component {
   state = {
     tasksData: [
-      { id: 1, status: "urgent", text: "Finish ticket update", done: true },
+      { id: 1, status: "urgent", text: "Finish ticket update", done: false },
       { id: 2, status: "new", text: "Create new ticket example", done: false },
-      { id: 3, status: "default", text: "Update ticket report", done: false },
+      { id: 3, status: "default", text: "Update ticket report", done: true },
     ],
     maxId: 4,
     tickets: [
@@ -188,9 +178,11 @@ export class App extends Component {
       };
     });
   };
+
   setFilterTerm = (filterTerm) => {
     this.setState({ filterTerm });
   };
+
   filterTickets = (data, substr) => {
     if (!substr.trim()) {
       return data;
@@ -235,46 +227,48 @@ export class App extends Component {
     return (
       <Wrapper>
         <GlobalStyle />
-        <Router>
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={() => (
-                <Flex>
-                  <Navbar />
-                  <Wrapper>
-                    <Header title="Overview" src={img} />
-                    <CardsStatistics data={data} />
-                    <Trends trendData={trendData} />
-                    <TicketsAndTasks
-                      tasksData={tasksData}
-                      ticketsData={ticketsData}
-                      addTask={this.addTask}
-                      onToggleDone={this.onToggleDone}
-                    />
-                  </Wrapper>
-                </Flex>
-              )}
-            />
-            <Route
-              path="/tickets"
-              render={() => (
-                <Flex>
-                  <Navbar />
-                  <Wrapper>
-                    <Header title="Tickets" src={img} />
-                    <Table
-                      tickets={visibleTickets}
-                      sortTickets={this.sortTickets}
-                      setFilterTerm={this.setFilterTerm}
-                    />
-                  </Wrapper>
-                </Flex>
-              )}
-            />
-          </Switch>
-        </Router>
+        <FlexContainer>
+          <Router>
+            <Navbar />
+            <Wrapper>
+              <Switch>
+                <Route
+                  path="/"
+                  exact
+                  render={() => (
+                    <>
+                      <Header title="Overview" src={img} />
+                      <main>
+                        <CardsStatistics data={data} />
+                        <Trends trendData={trendData} />
+                        <TicketsAndTasks
+                          tasksData={tasksData}
+                          ticketsData={ticketsData}
+                          addTask={this.addTask}
+                          onToggleDone={this.onToggleDone}
+                        />
+                      </main>
+                    </>
+                  )}
+                />
+                <Route
+                  path="/tickets"
+                  render={() => (
+                    <>
+                      <Header title="Tickets" src={img} />
+                      <Table
+                        tickets={visibleTickets}
+                        sortTickets={this.sortTickets}
+                        setFilterTerm={this.setFilterTerm}
+                      />
+                    </>
+                  )}
+                />
+                <Route component={Navbar} />
+              </Switch>
+            </Wrapper>
+          </Router>
+        </FlexContainer>
       </Wrapper>
     );
   }

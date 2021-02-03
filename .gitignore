@@ -10,8 +10,6 @@
 
 # production
 /build
-/src/images
-/src/icons
 .eslingcache
 .eslintcache
 # misc
